@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 competition_year = 2020
 link_source = f"{competition_year}/links_men.txt"
-num_to_scrape = 14
+num_to_scrape = 21
 
 with open(link_source) as f:
   links = [s.strip() for s in f.readlines()]
