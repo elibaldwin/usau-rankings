@@ -11,11 +11,11 @@ import math
 from collections import defaultdict
 
 n_iter = 1000
-week_of_season = 5
+week_of_season = 8
 competition_year = 2020
 season_start = datetime(competition_year, 1, 15)  
 compute_date = str(date.today())
-#compute_date = '2020-02-11'
+compute_date = '2020-03-01'
 
 date_weight_multiplier = 2 if week_of_season == 1 else 2**(1.0/(week_of_season-1))
 

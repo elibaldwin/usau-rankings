@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 competition_year = 2020
 link_source = f"{competition_year}/links_men.txt"
-num_to_scrape = 21
+num_to_scrape = 37
 
 with open(link_source) as f:
   links = [s.strip() for s in f.readlines()]
@@ -39,7 +39,7 @@ def parse_bracket_game(b_soup, t_name):
   res_row.append(str(b_soup['id'])[4:])
   res_row.append(t_name)
   date_str = '0' + str(b_soup.find(class_='date').get_text())
-  if date_str.index(' ') < 10:
+  if 'TBA' not in date_str and date_str.index(' ') < 10:
     date_str = date_str[:3] + '0' + date_str[3:]
   res_row.append(date_str)
   t1 = b_soup.find(class_='top_area')
@@ -55,7 +55,7 @@ for i, link in enumerate(links[:num_to_scrape]):
   if (i % 10 == 0):
     print(f'{i}/{num_to_scrape} done')
     print(len(results), "games scraped")
-
+  print(link)
   r = requests.get(link + "schedule/Men/CollegeMen/" )
   t_name = link[36:-1].replace('-', ' ').strip()
 
